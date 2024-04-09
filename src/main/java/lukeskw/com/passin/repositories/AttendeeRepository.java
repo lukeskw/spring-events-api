@@ -3,4 +3,10 @@ package lukeskw.com.passin.repositories;
 import lukeskw.com.passin.domain.attendee.Attendee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AttendeeRepository extends JpaRepository<Attendee, String> {}
+import java.util.List;
+import java.util.Optional;
+
+public interface AttendeeRepository extends JpaRepository<Attendee, String> {
+    List<Attendee> findByEventId(String eventId);
+    Optional<Attendee> findByEventIdAndEmail(String eventId, String email);
+}
